@@ -1,0 +1,22 @@
+<div>
+    <div style='float: right;margin:0.5em'>
+        <label *ngIf='isUserLoggedIn' style='margin-right:1em;color:green'>{{userName}}</label>
+        <a *ngIf='!isUserLoggedIn' (click)='NavigateToLoginPage()' >Login</a>
+        <a *ngIf='isUserLoggedIn' (click)='Logout()' >Logout</a>
+    </div>
+    <h1>Rotary Internation School</h1>
+    <nav class='navbar navbar-default' >
+        <div class='container-fluid'>
+            <ul class='nav navbar-nav'>
+                <li><a [routerLink]="['Home']">Home</a></li>
+                <li *ngIf='isAdmin'><a [routerLink]="['Admin']" >Admin</a></li>
+            </ul>
+        </div>        
+    </nav>
+    <div>
+            <login-page (onUserLoggedIn)="onUserLoggedIn($event)"></login-page>
+    <div>
+    <div class='container'>
+        <router-outlet></router-outlet>
+    </div>
+</div>
