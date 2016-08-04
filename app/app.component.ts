@@ -5,13 +5,15 @@ import {Router, ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES} from 'angular2
 import {Home} from './home';
 import {Login} from './login';
 import {Admin} from './admin';
+import {GlobalMembersUtil} from './GlobalMembersUtil';
 
 @Component({
     selector: 'ris-app',
     templateUrl: './app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
     providers:[HTTP_PROVIDERS,
-               ROUTER_PROVIDERS]
+               ROUTER_PROVIDERS,
+               GlobalMembersUtil]
 })
 
 @RouteConfig([
@@ -21,11 +23,12 @@ import {Admin} from './admin';
 ])
 
 export class AppComponent {
-    isUserLoggedIn: boolean=false;
-    isAdmin: boolean = false;
-    userName: string = 'Ramana';
+    // isUserLoggedIn: boolean=false;
+    // isAdmin: boolean = false;
+    // userName: string = 'Ramana';
+    
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private globalMembersUtil:GlobalMembersUtil) { }
 
     NavigateToLoginPage(){
       console.log("NavigateToLoginPage");

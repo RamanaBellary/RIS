@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './home', './login', './admin'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './home', './login', './admin', './GlobalMembersUtil'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, home_1, login_1, admin_1;
+    var core_1, http_1, router_1, home_1, login_1, admin_1, GlobalMembersUtil_1;
     var AppComponent;
     return {
         setters:[
@@ -32,14 +32,18 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
             },
             function (admin_1_1) {
                 admin_1 = admin_1_1;
+            },
+            function (GlobalMembersUtil_1_1) {
+                GlobalMembersUtil_1 = GlobalMembersUtil_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(router) {
+                // isUserLoggedIn: boolean=false;
+                // isAdmin: boolean = false;
+                // userName: string = 'Ramana';
+                function AppComponent(router, globalMembersUtil) {
                     this.router = router;
-                    this.isUserLoggedIn = false;
-                    this.isAdmin = false;
-                    this.userName = 'Ramana';
+                    this.globalMembersUtil = globalMembersUtil;
                 }
                 AppComponent.prototype.NavigateToLoginPage = function () {
                     console.log("NavigateToLoginPage");
@@ -57,14 +61,15 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                         templateUrl: './app/app.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
                         providers: [http_1.HTTP_PROVIDERS,
-                            router_1.ROUTER_PROVIDERS]
+                            router_1.ROUTER_PROVIDERS,
+                            GlobalMembersUtil_1.GlobalMembersUtil]
                     }),
                     router_1.RouteConfig([
                         { path: '/Home', name: 'Home', component: home_1.Home, useAsDefault: true },
                         { path: '/login', name: 'Login', component: login_1.Login },
                         { path: '/admin', name: 'Admin', component: admin_1.Admin }
                     ]), 
-                    __metadata('design:paramtypes', [router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router, GlobalMembersUtil_1.GlobalMembersUtil])
                 ], AppComponent);
                 return AppComponent;
             }());
