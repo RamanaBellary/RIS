@@ -25,14 +25,12 @@ System.register(['angular2/core', 'angular2/router', './GlobalMembersUtil'], fun
             }],
         execute: function() {
             Login = (function () {
+                //@Output() onUserLoggedIn = new EventEmitter<any>();
                 function Login(router, globalMembersUtil) {
                     this.router = router;
                     this.globalMembersUtil = globalMembersUtil;
-                    this.onUserLoggedIn = new core_1.EventEmitter();
                 }
                 Login.prototype.OnLogin = function () {
-                    //TODO:Validate user, update the userName in appComponent and 
-                    //redirect to home page if he is not Admin otherwise to Admin page
                     console.log("UserName Entered:" + this.userName);
                     if (this.userName.toLowerCase() == 'ramana' && this.password == 'ram') {
                         console.log("User is Admin");
@@ -51,10 +49,6 @@ System.register(['angular2/core', 'angular2/router', './GlobalMembersUtil'], fun
                         this.router.navigate(['/Home']);
                     }
                 };
-                __decorate([
-                    core_1.Output(), 
-                    __metadata('design:type', Object)
-                ], Login.prototype, "onUserLoggedIn", void 0);
                 Login = __decorate([
                     core_1.Component({
                         selector: 'login-page',

@@ -1,7 +1,8 @@
 <div>
-    <div style='float: right;margin:0.5em'>
+    <div style='cursor: pointer; cursor: hand;float: right;margin:0.5em'>
         <label *ngIf='globalMembersUtil.IsUserLoggedIn' style='margin-right:1em;color:green'>{{globalMembersUtil.LoggedInUserName}}</label>
         <a *ngIf='!globalMembersUtil.IsUserLoggedIn' (click)='NavigateToLoginPage()' >Login</a>
+        <a *ngIf='!globalMembersUtil.IsUserLoggedIn' (click)='NavigateToSignUpPage()' >SignUp</a>
         <a *ngIf='globalMembersUtil.IsUserLoggedIn' (click)='Logout()' >Logout</a>
     </div>
     <h1>Rotary Internation School</h1>

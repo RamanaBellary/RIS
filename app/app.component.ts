@@ -5,6 +5,7 @@ import {Router, ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES} from 'angular2
 import {Home} from './home';
 import {Login} from './login';
 import {Admin} from './admin';
+import {SignUp} from './signup';
 import {GlobalMembersUtil} from './GlobalMembersUtil';
 
 @Component({
@@ -19,7 +20,8 @@ import {GlobalMembersUtil} from './GlobalMembersUtil';
 @RouteConfig([
     { path: '/Home', name: 'Home', component: Home, useAsDefault: true },
     { path: '/login', name: 'Login', component: Login },
-    { path: '/admin', name: 'Admin', component: Admin }
+    { path: '/admin', name: 'Admin', component: Admin },
+    { path: '/signup', name: 'SignUp', component: SignUp }
 ])
 
 export class AppComponent {
@@ -30,8 +32,13 @@ export class AppComponent {
 
     constructor(private router: Router, private globalMembersUtil:GlobalMembersUtil) { }
 
+    NavigateToSignUpPage(){
+      console.log("Navigating To SignUp Page");
+      this.router.navigate(['/SignUp']);
+    }
+
     NavigateToLoginPage(){
-      console.log("NavigateToLoginPage");
+      console.log("Navigating To Login Page");
     this.router.navigate(['/Login']);
     }
 
@@ -41,5 +48,8 @@ export class AppComponent {
 
     Logout(){
       console.log("Logout");
+      this.globalMembersUtil.IsUserAdmin = this.globalMembersUtil.IsUserLoggedIn = false;
+      this.globalMembersUtil.LoggedInUserName="";
+      this.router.navigate(['/Home']);
     }
 }

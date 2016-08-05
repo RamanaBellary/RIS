@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './home', './login', './admin', './GlobalMembersUtil'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './home', './login', './admin', './signup', './GlobalMembersUtil'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, home_1, login_1, admin_1, GlobalMembersUtil_1;
+    var core_1, http_1, router_1, home_1, login_1, admin_1, signup_1, GlobalMembersUtil_1;
     var AppComponent;
     return {
         setters:[
@@ -33,6 +33,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
             function (admin_1_1) {
                 admin_1 = admin_1_1;
             },
+            function (signup_1_1) {
+                signup_1 = signup_1_1;
+            },
             function (GlobalMembersUtil_1_1) {
                 GlobalMembersUtil_1 = GlobalMembersUtil_1_1;
             }],
@@ -45,8 +48,12 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                     this.router = router;
                     this.globalMembersUtil = globalMembersUtil;
                 }
+                AppComponent.prototype.NavigateToSignUpPage = function () {
+                    console.log("Navigating To SignUp Page");
+                    this.router.navigate(['/SignUp']);
+                };
                 AppComponent.prototype.NavigateToLoginPage = function () {
-                    console.log("NavigateToLoginPage");
+                    console.log("Navigating To Login Page");
                     this.router.navigate(['/Login']);
                 };
                 AppComponent.prototype.onUserLoggedIn = function (object) {
@@ -54,6 +61,9 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                 };
                 AppComponent.prototype.Logout = function () {
                     console.log("Logout");
+                    this.globalMembersUtil.IsUserAdmin = this.globalMembersUtil.IsUserLoggedIn = false;
+                    this.globalMembersUtil.LoggedInUserName = "";
+                    this.router.navigate(['/Home']);
                 };
                 AppComponent = __decorate([
                     core_1.Component({
@@ -67,7 +77,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
                     router_1.RouteConfig([
                         { path: '/Home', name: 'Home', component: home_1.Home, useAsDefault: true },
                         { path: '/login', name: 'Login', component: login_1.Login },
-                        { path: '/admin', name: 'Admin', component: admin_1.Admin }
+                        { path: '/admin', name: 'Admin', component: admin_1.Admin },
+                        { path: '/signup', name: 'SignUp', component: signup_1.SignUp }
                     ]), 
                     __metadata('design:paramtypes', [router_1.Router, GlobalMembersUtil_1.GlobalMembersUtil])
                 ], AppComponent);

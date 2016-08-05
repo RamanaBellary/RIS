@@ -1,4 +1,4 @@
-import {Component,EventEmitter, Input, Output } from 'angular2/core';
+import {Component } from 'angular2/core';
 import {Router, ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from 'angular2/router';
 import {GlobalMembersUtil} from './GlobalMembersUtil';
 
@@ -10,13 +10,11 @@ import {GlobalMembersUtil} from './GlobalMembersUtil';
 export class Login {
     userName:string;
     password:string;
-    @Output() onUserLoggedIn = new EventEmitter<any>();
+    //@Output() onUserLoggedIn = new EventEmitter<any>();
 
     constructor(private router: Router, private globalMembersUtil:GlobalMembersUtil) { }
 
     OnLogin(){
-        //TODO:Validate user, update the userName in appComponent and 
-        //redirect to home page if he is not Admin otherwise to Admin page
         console.log("UserName Entered:"+this.userName);
         if(this.userName.toLowerCase() == 'ramana' && this.password =='ram')
         {
